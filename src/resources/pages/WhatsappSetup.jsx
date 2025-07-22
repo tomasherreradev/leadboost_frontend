@@ -35,7 +35,7 @@ export default function WhatsappSetup() {
       
       // Redirigir al callback con el número
       const state = searchParams.get('state');
-      const callbackUrl = `${import.meta.env.VITE_APP_BACKEND_API}/api/social/whatsapp/callback?phoneNumber=${encodeURIComponent(phoneNumber)}&state=${state}`;
+      const callbackUrl = `${import.meta.env.VITE_APP_BACKEND_API}/social/whatsapp/callback?phoneNumber=${encodeURIComponent(phoneNumber)}&state=${state}`;
       window.location.href = callbackUrl;
       
     } catch (error) {

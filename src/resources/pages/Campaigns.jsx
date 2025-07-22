@@ -30,7 +30,7 @@ export default function Campaigns() {
     const fetchSocialAccounts = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_APP_BACKEND_API}/api/social-accounts/status`,
+          `${import.meta.env.VITE_APP_BACKEND_API}/social-accounts/status`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -178,7 +178,7 @@ export default function Campaigns() {
 
     try {
       await axios.post(
-        `${import.meta.env.VITE_APP_BACKEND_API}/api/posts/create`,
+        `${import.meta.env.VITE_APP_BACKEND_API}/posts/create`,
         formData,
         {
           headers: {

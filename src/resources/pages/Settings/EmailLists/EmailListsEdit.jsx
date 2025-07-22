@@ -12,7 +12,7 @@ export default function EditEmailList() {
 
   const fetchEmails = async () => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_APP_BACKEND_API}/api/mail-lists/${id}/emails`);
+      const res = await fetch(`${import.meta.env.VITE_APP_BACKEND_API}/mail-lists/${id}/emails`);
       const data = await res.json();
       setEmails(data);
     } catch (error) {
@@ -27,7 +27,7 @@ export default function EditEmailList() {
   const handleAgregarEmail = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`${import.meta.env.VITE_APP_BACKEND_API}/api/mail-lists/${id}/emails`, {
+      const res = await fetch(`${import.meta.env.VITE_APP_BACKEND_API}/mail-lists/${id}/emails`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
@@ -42,7 +42,7 @@ export default function EditEmailList() {
 
   const handleEliminarEmail = async (emailId) => {
     try {
-      await fetch(`${import.meta.env.VITE_APP_BACKEND_API}/api/mail-lists/${id}/emails/${emailId}`, {
+      await fetch(`${import.meta.env.VITE_APP_BACKEND_API}/mail-lists/${id}/emails/${emailId}`, {
         method: "DELETE",
       });
       fetchEmails();
@@ -74,7 +74,7 @@ export default function EditEmailList() {
       const emailsImportados = json.map((row) => row.email).filter((email) => !!email);
 
       for (const correo of emailsImportados) {
-        await fetch(`${import.meta.env.VITE_APP_BACKEND_API}/api/mail-lists/${id}/emails`, {
+        await fetch(`${import.meta.env.VITE_APP_BACKEND_API}/mail-lists/${id}/emails`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email: correo }),

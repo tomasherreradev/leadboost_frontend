@@ -12,7 +12,7 @@ export default function EmailLists() {
 
   const fetchListas = async () => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_APP_BACKEND_API}/api/mail-lists`);
+      const res = await fetch(`${import.meta.env.VITE_APP_BACKEND_API}/mail-lists`);
       const data = await res.json();
       setListas(data);
     } catch (error) {
@@ -27,7 +27,7 @@ export default function EmailLists() {
   const handleCrearLista = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`${import.meta.env.VITE_APP_BACKEND_API}/api/mail-lists`, {
+      const res = await fetch(`${import.meta.env.VITE_APP_BACKEND_API}/mail-lists`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

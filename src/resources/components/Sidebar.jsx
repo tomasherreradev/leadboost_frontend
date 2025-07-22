@@ -34,8 +34,8 @@ export default function Sidebar({ activePage }) {
       {/* Sidebar */}
       <nav
         className={`
-          fixed top-0 left-0 h-full w-64 bg-white border-r border-gray-200 flex flex-col
-          transform transition-transform duration-300 ease-in-out
+          fixed top-0 left-0 h-screen w-64 bg-white border-r border-gray-200 flex flex-col
+          transform transition-transform duration-300 ease-in-out justify-between
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
           lg:translate-x-0 lg:static lg:flex
           z-50
