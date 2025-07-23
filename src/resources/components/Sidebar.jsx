@@ -7,11 +7,19 @@ import {
   FaUser,
   FaBars,
   FaTimes,
+  FaSignOutAlt,
 } from "react-icons/fa";
 import logo from '../../assets/images/logo.png';
+import { useAuth } from '../../context/AuthContext';
+
 
 export default function Sidebar({ activePage }) {
   const [isOpen, setIsOpen] = useState(false);
+  const { logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
 
   const menuItems = [
     { id: "dashboard", label: "Dashboard", icon: <FaChartLine />, href: "/home" },
@@ -77,6 +85,13 @@ export default function Sidebar({ activePage }) {
             <FaUser size={18} />
             <span>Mi Cuenta</span>
           </button>
+          <button 
+                onClick={handleLogout}
+                className="flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition w-full mt-4"
+              >
+                <FaSignOutAlt />
+                Cerrar Sesión
+              </button>
         </div>
       </nav>
     </>

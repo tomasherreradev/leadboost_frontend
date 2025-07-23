@@ -216,7 +216,7 @@ export default function Campaigns() {
       case "facebook":
         return [
           { value: "post", label: "Post" },
-          { value: "story", label: "Historia" },
+          { value: "story", label: "Historia (se publica como post en Facebook)" },
         ];
       case "email":
         return [{ value: "email", label: "Email" }];
