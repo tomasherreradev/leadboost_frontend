@@ -20,6 +20,7 @@ import FacebookCallback from './resources/pages/FacebookCallback';
 import InstagramCallback from './resources/pages/InstagramCallback';
 import WhatsappSetup from './resources/pages/WhatsappSetup';
 import WhatsappCallback from './resources/pages/WhatsappCallback';
+import Messages from './resources/pages/Messages';
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
@@ -58,6 +59,7 @@ const AppRoutes = () => (
     <Route path="/instagram-callback" element={<InstagramCallback />} />
     <Route path="/whatsapp-setup" element={<WhatsappSetup />} />
     <Route path="/whatsapp-callback" element={<WhatsappCallback />} />
+    <Route path="/messages" element={<ProtectedRoute><Messages /></ProtectedRoute>} />
 
     {/* Ruta 404 */}
     <Route path="*" element={<NotFound />} />
