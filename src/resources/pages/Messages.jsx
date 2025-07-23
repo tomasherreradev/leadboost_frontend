@@ -19,7 +19,11 @@ export default function Messages() {
         const res = await axios.get(`/api/messages?provider=${provider}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
-        setMessages(res.data);
+        if (Array.isArray(res.data)) {
+          setMessages(res.data);
+        } else {
+          setMessages([]);
+        }
       } catch (err) {
         setMessages([]);
       }
