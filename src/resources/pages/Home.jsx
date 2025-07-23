@@ -1,4 +1,4 @@
-import { FaChartLine, FaBullhorn, FaCog, FaUser, FaEnvelope, FaWhatsapp, FaInstagram, FaFacebook, FaSearch, FaQuestionCircle, FaBell, FaPlus, FaSignOutAlt } from 'react-icons/fa';
+import { FaEnvelope, FaWhatsapp, FaInstagram, FaFacebook, FaPlus, FaSignOutAlt, FaPaperPlane } from 'react-icons/fa';
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import Sidebar from '../components/Sidebar';
@@ -30,6 +30,11 @@ export default function Home() {
               <p className="text-gray-600">Bienvenido, {user?.email}</p>
             </div>
             <div className="flex items-center gap-4">
+              <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                <FaPaperPlane />
+                Mensajes
+              </button>
+
               <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
                 <FaPlus />
                 Nueva Campaña
