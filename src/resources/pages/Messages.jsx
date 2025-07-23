@@ -16,7 +16,7 @@ export default function Messages() {
       setLoading(true);
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get(`/api/messages?provider=${provider}`, {
+        const res = await axios.get(`${import.meta.env.VITE_APP_BACKEND_API}/messages?provider=${provider}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (Array.isArray(res.data)) {
