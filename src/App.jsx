@@ -8,7 +8,8 @@ import Register from './resources/pages/Register';
 import ForgetPassword from './resources/pages/ForgetPassword';
 import ResetPassword from './resources/pages/ResetPassword';
 import Settings from './resources/pages/Settings';
-import Account from './resources/pages/Settings/Account';
+import ContactList from './resources/pages/Settings/ContactLists/ContactList';
+import ContactListsEdit from './resources/pages/Settings/ContactLists/ContactListsEdit';
 import EmailLists from './resources/pages/Settings/EmailLists/EmailLists';
 import EmailListsEdit from './resources/pages/Settings/EmailLists/EmailListsEdit';
 import Security from './resources/pages/Settings/Security';
@@ -47,7 +48,8 @@ const AppRoutes = () => (
     <Route path="/networks" element={<ProtectedRoute><SincroNetworks /></ProtectedRoute>} />
     <Route path="/campaigns" element={<ProtectedRoute><Campaigns /></ProtectedRoute>} />
     <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
-    <Route path="/settings/account" element={<ProtectedRoute><Account /></ProtectedRoute>} />
+    <Route path="/settings/contact-list" element={<ProtectedRoute><ContactList /></ProtectedRoute>} />
+    <Route path="/settings/contact-lists/:id/edit" element={<ProtectedRoute><ContactListsEdit /></ProtectedRoute>} />
     <Route path="/settings/email-lists" element={<ProtectedRoute><EmailLists /></ProtectedRoute>} />
     <Route path="/settings/email-lists/:id/edit" element={<ProtectedRoute><EmailListsEdit /></ProtectedRoute>} />
     <Route path="/settings/security" element={<ProtectedRoute><Security /></ProtectedRoute>} />

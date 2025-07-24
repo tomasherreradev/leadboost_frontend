@@ -13,7 +13,7 @@ import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 
 const settingsItems = [
-  { href: '/settings/account', label: 'Cuenta', icon: <FaUserCog className="text-blue-500" /> },
+  { href: '/settings/contact-list', label: 'Contactos', icon: <FaUserCog className="text-blue-500" /> },
   { href: '/settings/email-lists', label: 'Listas de Correo', icon: <FaEnvelope className="text-yellow-500" /> },
   { href: '/settings/security', label: 'Seguridad', icon: <FaShieldAlt className="text-red-500" /> },
   { href: '/settings/privacy', label: 'Privacidad', icon: <FaLock className="text-purple-500" /> },

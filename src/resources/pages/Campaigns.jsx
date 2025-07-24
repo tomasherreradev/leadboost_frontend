@@ -16,7 +16,7 @@ export default function Campaigns() {
   const [activeTab, setActiveTab] = useState("facebook");
   const [postType, setPostType] = useState("post");
   const [content, setContent] = useState("");
-  const [image, setImage] = useState(null);
+  const [images, setImages] = useState([]); // Cambia de image a images
   const [selectedAccounts, setSelectedAccounts] = useState([]);
   const [socialAccounts, setSocialAccounts] = useState([]);
   const [recipients, setRecipients] = useState([]);
@@ -73,7 +73,7 @@ export default function Campaigns() {
     setActiveTab(tab);
     // Reset form when changing tabs
     setContent("");
-    setImage(null);
+    setImages([]);
     setRecipients([]);
     setPhoneNumber("");
     setEmailSubject("");
@@ -102,10 +102,7 @@ export default function Campaigns() {
 
   // Handle image upload
   const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setImage(file);
-    }
+    setImages(Array.from(e.target.files)); // Guarda todas las imágenes seleccionadas
   };
 
   // Handle recipient input
@@ -154,7 +151,7 @@ export default function Campaigns() {
       recipients,
       emailSubject,
       phoneNumber,
-      image: image ? image.name : null
+      images: images.length > 0 ? images.map(img => img.name).join(', ') : null
     });
 
     const formData = new FormData();
@@ -172,9 +169,10 @@ export default function Campaigns() {
       formData.append("phoneNumber", phoneNumber);
     }
 
-    if (image) {
-      formData.append("image", image);
-    }
+    // Adjuntar todas las imágenes
+    images.forEach((img) => {
+      formData.append("images", img);
+    });
 
     try {
       await axios.post(
@@ -191,7 +189,7 @@ export default function Campaigns() {
       setSuccess("Campaña creada exitosamente");
       // Reset form
       setContent("");
-      setImage(null);
+      setImages([]);
       setSelectedAccounts([]);
       setRecipients([]);
       setPhoneNumber("");
@@ -347,6 +345,7 @@ export default function Campaigns() {
                   type="file"
                   id="media-upload"
                   accept="image/*"
+                  multiple // <-- Permite seleccionar varias imágenes
                   onChange={handleImageUpload}
                   className="absolute inset-0 opacity-0 cursor-pointer"
                 />
@@ -357,10 +356,12 @@ export default function Campaigns() {
                 >
                   Seleccionar Imagen
                 </button>
-                {image && (
-                  <p className="mt-2 text-sm text-gray-600">
-                    Archivo seleccionado: {image.name}
-                  </p>
+                {images.length > 0 && (
+                  <ul className="mt-2 text-sm text-gray-600">
+                    {images.map((img, idx) => (
+                      <li key={idx}>Archivo seleccionado: {img.name}</li>
+                    ))}
+                  </ul>
                 )}
               </div>
 

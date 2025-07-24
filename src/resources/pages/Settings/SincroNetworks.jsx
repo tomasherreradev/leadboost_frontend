@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
 import Header from "../../components/Header";
 import { socialService } from "../../../services/api";
+import Swal from "sweetalert2";
 
 const networks = [
   {
@@ -95,7 +96,11 @@ export default function SincroNetworks() {
       window.location.href = authUrl;
     } catch (error) {
       console.error('Error al conectar Facebook:', error.response?.data || error.message);
-      alert('Error al conectar con Facebook');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al conectar con Facebook',
+        text: error.response?.data || error.message
+      });
     } finally {
       setLoading(false);
     }
@@ -108,7 +113,11 @@ export default function SincroNetworks() {
       window.location.href = authUrl;
     } catch (error) {
       console.error("Error al conectar Gmail:", error.response?.data || error.message);
-      alert("Error al conectar con Gmail");
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al conectar con Gmail',
+        text: error.response?.data || error.message
+      });
     } finally {
       setLoading(false);
     }
@@ -121,7 +130,11 @@ export default function SincroNetworks() {
       window.location.href = authUrl;
     } catch (error) {
       console.error('Error al conectar Instagram:', error.response?.data || error.message);
-      alert('Error al conectar con Instagram');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al conectar con Instagram',
+        text: error.response?.data || error.message
+      });
     } finally {
       setLoading(false);
     }
@@ -132,10 +145,16 @@ export default function SincroNetworks() {
       setLoading(true);
       await socialService.disconnectFacebook();
       setFacebookConnected(false);
-      alert('Cuenta de Facebook desconectada exitosamente');
+      Swal.fire({
+        icon: 'success',
+        title: 'Cuenta de Facebook desconectada exitosamente'
+      });
     } catch (error) {
       console.error('Error al desconectar Facebook:', error);
-      alert('Error al desconectar cuenta de Facebook');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al desconectar cuenta de Facebook'
+      });
     } finally {
       setLoading(false);
     }
@@ -146,10 +165,16 @@ export default function SincroNetworks() {
       setLoading(true);
       await socialService.disconnectGmail();
       setGmailConnected(false);
-      alert("Cuenta de Gmail desconectada exitosamente");
+      Swal.fire({
+        icon: 'success',
+        title: 'Cuenta de Gmail desconectada exitosamente'
+      });
     } catch (error) {
       console.error("Error al desconectar Gmail:", error);
-      alert("Error al desconectar cuenta de Gmail");
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al desconectar cuenta de Gmail'
+      });
     } finally {
       setLoading(false);
     }
@@ -160,10 +185,16 @@ export default function SincroNetworks() {
       setLoading(true);
       await socialService.disconnectInstagram();
       setInstagramConnected(false);
-      alert('Cuenta de Instagram desconectada exitosamente');
+      Swal.fire({
+        icon: 'success',
+        title: 'Cuenta de Instagram desconectada exitosamente'
+      });
     } catch (error) {
       console.error('Error al desconectar Instagram:', error);
-      alert('Error al desconectar cuenta de Instagram');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al desconectar cuenta de Instagram'
+      });
     } finally {
       setLoading(false);
     }
@@ -176,7 +207,11 @@ export default function SincroNetworks() {
       window.location.href = authUrl;
     } catch (error) {
       console.error('Error al conectar WhatsApp:', error.response?.data || error.message);
-      alert('Error al conectar con WhatsApp');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al conectar con WhatsApp',
+        text: error.response?.data || error.message
+      });
     } finally {
       setLoading(false);
     }
@@ -187,10 +222,16 @@ export default function SincroNetworks() {
       setLoading(true);
       await socialService.disconnectWhatsapp();
       setWhatsappConnected(false);
-      alert('Cuenta de WhatsApp desconectada exitosamente');
+      Swal.fire({
+        icon: 'success',
+        title: 'Cuenta de WhatsApp desconectada exitosamente'
+      });
     } catch (error) {
       console.error('Error al desconectar WhatsApp:', error);
-      alert('Error al desconectar cuenta de WhatsApp');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al desconectar cuenta de WhatsApp'
+      });
     } finally {
       setLoading(false);
     }
